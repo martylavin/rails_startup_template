@@ -37,7 +37,12 @@ end
 
 gem_group :production do
   # For Rails 4 deployment on Heroku
+  # paratrooper is a library(gem) for creating tasks that deploy to Heroku.
   gem "rails_12factor"
+  if yes?("Are you using Heroku?")
+    gem "pg" if yes?("Install the postgresql gem?")
+    gem 'paratrooper' if yes?("Install the paratrooper gem?")
+  end
 end
 
 
